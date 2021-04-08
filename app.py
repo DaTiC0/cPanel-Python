@@ -22,12 +22,12 @@ function = 'fetch_certificates_for_fqdns'  # get function TEST
 
 base_url = '{}://{}:{}'.format('https', config.URL, config.PORT)
 path = f'/execute/{module}/{function}'
-params = ''
+params = {}
 url = uparse.urljoin(base_url, path)
 print(url)
 headers = {'Authorization': auth}
 
-r = session.post(url,headers=headers)
+r = session.post(url, params, headers=headers)
 
 if r.status_code == 401:
     raise error
